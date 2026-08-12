@@ -21,7 +21,6 @@ python3 -c 'import sys; raise SystemExit(0 if sys.version_info >= (3, 11) else 1
 
 install -d -m 0700 "${APP_DIR}" "${CONFIG_DIR}" "${STATE_DIR}" "${UNIT_DIR}"
 python3 -m venv "${APP_DIR}/venv"
-"${APP_DIR}/venv/bin/python" -m pip install --upgrade pip
 "${APP_DIR}/venv/bin/python" -m pip install "${PROJECT_DIR}[google]"
 
 if [[ ! -f "${CONFIG_DIR}/hmac.key" ]]; then
@@ -31,7 +30,7 @@ chmod 0600 "${CONFIG_DIR}/hmac.key"
 install -m 0600 "${PROJECT_DIR}/systemd/claude-daily-memory.service" "${UNIT_DIR}/claude-daily-memory.service"
 install -m 0600 "${PROJECT_DIR}/systemd/claude-daily-memory.timer" "${UNIT_DIR}/claude-daily-memory.timer"
 systemctl --user daemon-reload
-systemctl --user enable --now claude-daily-memory.timer
+systemctl --user disable --now claude-daily-memory.timer 2>/dev/null || true
 
-printf '%s\n' "Installed safely. The timer is active, but Google upload remains off until OAuth setup is completed."
-systemctl --user list-timers claude-daily-memory.timer --no-pager
+printf '%s\n' "Installed safely. The timer is staged but remains off until Google OAuth setup is completed."
+printf '%s\n' "After OAuth setup, enable it with: systemctl --user enable --now claude-daily-memory.timer"
