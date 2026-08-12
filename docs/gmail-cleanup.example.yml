@@ -1,0 +1,21 @@
+# This file defines reversible Gmail cleanup rules.
+# A message goes to Trash only when every positive condition in one rule matches.
+# Trash is never emptied by Claude Daily Memory.
+
+rules:
+  - name: old-marketing-newsletters
+    sender_domains:
+      - newsletters.example
+    required_labels:
+      - CATEGORY_PROMOTIONS
+    older_than_days: 30
+    exclude_senders:
+      - receipts@newsletters.example
+    exclude_subject_patterns:
+      - "invoice|receipt|payment|security|verification"
+
+  - name: known-spam-sender
+    sender_addresses:
+      - spam@example.invalid
+    subject_patterns:
+      - "limited offer|act now"

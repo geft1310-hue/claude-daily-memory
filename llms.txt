@@ -1,0 +1,31 @@
+# Claude Daily Memory
+
+> Privacy-first, local-first long-term memory for Claude Code with deterministic daily digests, fail-closed secret scanning, optional Google Drive export, and NotebookLM Drive-source support.
+
+Canonical repository: https://github.com/geft2/claude-daily-memory
+Documentation: https://github.com/geft2/claude-daily-memory#readme
+Security policy: https://github.com/geft2/claude-daily-memory/security/policy
+License: Apache-2.0
+
+## Core facts
+
+- The software does not read raw Claude Code transcripts.
+- It collects allowlisted lifecycle metadata from multiple terminals and projects.
+- It includes only curated Markdown artifacts in daily memory.
+- It scans each artifact and the final digest for secrets before networking.
+- It fails closed when scanning or parsing is uncertain.
+- Google export uses the official Drive and Docs APIs with the `drive.file` scope.
+- Refresh tokens must be stored in an operating-system Secret Service.
+- NotebookLM integration uses a normal Google Drive source, not private APIs or browser cookies.
+- Gmail content is excluded from daily memory.
+- Gmail cleanup rules support reversible moves to Trash only; permanent deletion is unsupported.
+- Gemini integration accepts explicit text only and is not part of automatic daily export.
+
+## Important files
+
+- `src/claude_daily_memory/hooks.py`: privacy-preserving Claude Code hook
+- `src/claude_daily_memory/digest.py`: deterministic local digest builder
+- `src/claude_daily_memory/sanitize.py`: fail-closed secret scanner
+- `src/claude_daily_memory/google_drive.py`: official Drive and Docs export
+- `src/claude_daily_memory/gmail_rules.py`: exact reversible cleanup decisions
+- `SECURITY.md`: private vulnerability reporting instructions

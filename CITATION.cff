@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+title: Claude Daily Memory
+message: If this software helps your work, please cite the repository.
+type: software
+version: 0.1.0
+date-released: 2026-08-12
+license: Apache-2.0
+repository-code: https://github.com/geft2/claude-daily-memory
+url: https://github.com/geft2/claude-daily-memory
+abstract: Privacy-first daily memory for Claude Code with fail-closed secret scanning and optional Google Drive export.
+keywords:
+  - Claude Code
+  - agent memory
+  - AI memory
+  - privacy
+  - secret scanning
+  - Google Drive
+  - NotebookLM

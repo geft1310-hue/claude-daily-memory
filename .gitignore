@@ -1,0 +1,30 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+build/
+dist/
+.coverage
+.pytest_cache/
+.mypy_cache/
+
+# Credentials and personal state
+*.env
+.env*
+*credentials*.json
+*client_secret*.json
+google-client.json
+token.json
+*.key
+*.pem
+*.p12
+state.json
+events.jsonl
+digest-*.md
+workspace/
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store

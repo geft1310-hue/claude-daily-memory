@@ -1,0 +1,60 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "claude-daily-memory"
+version = "0.1.0"
+description = "Privacy-first daily memory for Claude Code, with secret scanning and optional Google Drive export."
+readme = "README.md"
+requires-python = ">=3.11"
+license = {file = "LICENSE"}
+authors = [{name = "Claude Daily Memory contributors"}]
+keywords = [
+  "claude-code",
+  "claude",
+  "ai-memory",
+  "agent-memory",
+  "notebooklm",
+  "google-drive",
+  "privacy",
+  "secret-scanner",
+  "developer-tools",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "License :: OSI Approved :: Apache Software License",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Software Development :: Libraries :: Application Frameworks",
+]
+dependencies = ["PyYAML>=6.0"]
+
+[project.optional-dependencies]
+google = [
+  "google-api-python-client>=2.170",
+  "google-auth>=2.40",
+  "google-auth-oauthlib>=1.2",
+  "keyring>=25.6",
+]
+gemini = [
+  "google-genai>=1.30",
+  "google-auth>=2.40",
+]
+test = []
+
+[project.urls]
+Homepage = "https://github.com/geft2/claude-daily-memory"
+Documentation = "https://github.com/geft2/claude-daily-memory#readme"
+Issues = "https://github.com/geft2/claude-daily-memory/issues"
+Security = "https://github.com/geft2/claude-daily-memory/security/policy"
+
+[project.scripts]
+claude-daily-memory-hook = "claude_daily_memory.hooks:main"
+claude-daily-memory = "claude_daily_memory.cli:main"
+claude-daily-memory-gemini = "claude_daily_memory.gemini_bridge:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/claude_daily_memory"]

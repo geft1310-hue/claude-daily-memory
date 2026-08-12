@@ -1,0 +1,35 @@
+name: Bug report
+description: Report reproducible incorrect behavior using synthetic data only
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Never paste credentials, email, transcripts, or private digests. Use Security Advisories for vulnerabilities.
+  - type: textarea
+    id: behavior
+    attributes:
+      label: What happened?
+      description: Describe the behavior with synthetic examples.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+    validations:
+      required: true
+  - type: dropdown
+    id: secrets
+    attributes:
+      label: Does this report contain real private data?
+      options:
+        - "No"
+    validations:
+      required: true

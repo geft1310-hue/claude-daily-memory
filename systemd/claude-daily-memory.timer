@@ -1,0 +1,13 @@
+[Unit]
+Description=Run Claude Daily Memory once per day
+Documentation=https://github.com/geft2/claude-daily-memory
+
+[Timer]
+OnCalendar=*-*-* 03:17:00
+Persistent=true
+RandomizedDelaySec=12m
+AccuracySec=1m
+Unit=claude-daily-memory.service
+
+[Install]
+WantedBy=timers.target

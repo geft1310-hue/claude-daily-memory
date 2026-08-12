@@ -1,0 +1,34 @@
+[Unit]
+Description=Build and upload the privacy-filtered Claude daily memory
+Documentation=https://github.com/geft2/claude-daily-memory
+After=network-online.target
+Wants=network-online.target
+StartLimitIntervalSec=3600
+StartLimitBurst=3
+
+[Service]
+Type=oneshot
+UMask=0077
+Environment=PYTHONUNBUFFERED=1
+ExecStart=%h/.local/share/claude-daily-memory/venv/bin/python -m claude_daily_memory.job --workspace %h/tools/trailmark/workspace --projects-root %h/projects --hmac-key %h/.config/claude-daily-memory/hmac.key --google-client %h/.config/claude-daily-memory/google-client.json --config %h/.config/claude-daily-memory/config.json --state %h/.local/state/claude-daily-memory/state.json
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=%h/tools/trailmark/workspace %h/.local/state/claude-daily-memory
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectKernelLogs=true
+ProtectClock=true
+ProtectHostname=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+SystemCallArchitectures=native
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=true
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
