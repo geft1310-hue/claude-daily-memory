@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Claude Daily Memory — NotebookLM как долговременная память Claude Code</title>
+  <meta name="description" content="Перестаньте терять решения между сессиями Claude Code. Claude Daily Memory превращает полезную работу всех терминалов и проектов в растущую базу знаний NotebookLM.">
+  <meta name="keywords" content="Claude Code NotebookLM, память Claude Code, долговременная память ИИ, второй мозг NotebookLM, база знаний, Google Диск, память по проектам">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="author" content="Участники проекта Claude Daily Memory">
+  <link rel="canonical" href="https://geft1310-hue.github.io/claude-daily-memory/ru/">
+  <link rel="alternate" hreflang="ru" href="https://geft1310-hue.github.io/claude-daily-memory/ru/">
+  <link rel="alternate" hreflang="en" href="https://geft1310-hue.github.io/claude-daily-memory/">
+  <link rel="alternate" hreflang="x-default" href="https://geft1310-hue.github.io/claude-daily-memory/">
+  <link rel="license" href="https://www.apache.org/licenses/LICENSE-2.0">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="NotebookLM как долговременная память для Claude Code">
+  <meta property="og:description" content="Планы, решения, находки и незавершённые задачи из всех терминалов Claude Code в одной растущей базе знаний NotebookLM.">
+  <meta property="og:url" content="https://geft1310-hue.github.io/claude-daily-memory/ru/">
+  <meta property="og:site_name" content="Claude Daily Memory">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Claude Daily Memory">
+  <meta name="twitter:description" content="Работа в Claude Code не должна исчезать вместе с сессией. Превратите её в растущую базу знаний NotebookLM.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Claude Daily Memory",
+    "alternateName": "Долговременная память Claude Code через NotebookLM",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Linux",
+    "inLanguage": "ru",
+    "description": "Открытая программа, которая превращает полезные результаты работы в нескольких терминалах и проектах Claude Code в безопасную растущую базу знаний NotebookLM через официальный источник Google Диска.",
+    "featureList": [
+      "Память по всем терминалам Claude Code",
+      "Дневная память по всем проектам",
+      "Источник Google Диска для NotebookLM",
+      "Отказоустойчивая проверка секретов",
+      "Локальный архив Markdown",
+      "Официальные API Google Drive и Docs"
+    ],
+    "codeRepository": "https://github.com/geft1310-hue/claude-daily-memory",
+    "downloadUrl": "https://github.com/geft1310-hue/claude-daily-memory/releases/latest",
+    "url": "https://geft1310-hue.github.io/claude-daily-memory/ru/",
+    "license": "https://www.apache.org/licenses/LICENSE-2.0",
+    "programmingLanguage": "Python",
+    "isAccessibleForFree": true
+  }
+  </script>
+  <style>
+    :root { color-scheme:light dark; --bg:#f6f4ef; --card:#fffdf8; --text:#172033; --muted:#5c6678; --accent:#6246ea; --accent2:#f0a33a; --border:#ddd8cc; --safe:#087f5b; --hero:#ebe5ff; }
+    @media (prefers-color-scheme:dark) { :root { --bg:#0d1220; --card:#171e2d; --text:#f2f4fa; --muted:#b5becd; --accent:#a99cff; --accent2:#ffc078; --border:#30394b; --safe:#63e6be; --hero:#211b3b; } }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--text); font:16px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    main { width:min(72rem,calc(100% - 2rem)); margin:auto; padding:3.5rem 0; }
+    h1 { font-size:clamp(2.3rem,6vw,4.6rem); line-height:1.02; letter-spacing:-.045em; max-width:18ch; margin:.25em 0; }
+    h2 { font-size:clamp(1.55rem,3vw,2.35rem); line-height:1.15; margin-top:3.5rem; }
+    h3 { line-height:1.2; }
+    a { color:var(--accent); }
+    .langbar { display:flex; gap:.6rem; justify-content:flex-end; font-size:.9rem; }
+    .langbar span { font-weight:750; }
+    .eyebrow { color:var(--accent); font-weight:800; text-transform:uppercase; letter-spacing:.13em; font-size:.78rem; }
+    .lead { max-width:49rem; font-size:clamp(1.14rem,2vw,1.45rem); color:var(--muted); }
+    .promise { max-width:52rem; padding:1rem 1.25rem; border-left:.35rem solid var(--accent2); background:var(--card); font-weight:700; }
+    .actions { display:flex; flex-wrap:wrap; gap:.8rem; margin:2rem 0; }
+    .button { display:inline-block; padding:.8rem 1.05rem; border-radius:.65rem; text-decoration:none; font-weight:750; background:var(--accent); color:white; }
+    .secondary { background:transparent; color:var(--text); border:1px solid var(--border); }
+    .hero { padding:clamp(1.2rem,4vw,3rem); border-radius:1.4rem; background:linear-gradient(135deg,var(--hero),var(--card)); border:1px solid var(--border); }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(15rem,1fr)); gap:1rem; }
+    .card { background:var(--card); border:1px solid var(--border); border-radius:1rem; padding:1.25rem; }
+    .card h3 { margin-top:0; }
+    pre { overflow-x:auto; background:#101725; color:#f8fafc; padding:1rem; border-radius:.8rem; }
+    code { font-family:ui-monospace,SFMono-Regular,Consolas,monospace; }
+    .flow { text-align:center; font-weight:700; padding:1.25rem; border:1px dashed var(--border); border-radius:1rem; overflow-x:auto; background:var(--card); }
+    .notebook { border-top:.35rem solid var(--accent); }
+    .security { border-top:.35rem solid var(--safe); }
+    footer { margin-top:4rem; padding-top:1.5rem; border-top:1px solid var(--border); color:var(--muted); }
+  </style>
+</head>
+<body>
+<main>
+  <p class="langbar"><span>Русский</span> · <a href="/claude-daily-memory/">English</a></p>
+  <section class="hero">
+    <p class="eyebrow">Claude Code → дневная память → NotebookLM</p>
+    <h1>Перестаньте терять лучшую работу с ИИ.</h1>
+    <p class="lead">Claude Daily Memory превращает полезные планы, решения, находки и незавершённые задачи из всех терминалов и проектов Claude Code в одну растущую базу знаний NotebookLM.</p>
+    <p class="promise">Claude Code выполняет работу. Claude Daily Memory сохраняет полезные результаты. NotebookLM помогает искать, связывать, понимать и использовать их снова.</p>
+    <div class="actions">
+      <a class="button" href="https://github.com/geft1310-hue/claude-daily-memory">Открыть на GitHub</a>
+      <a class="button secondary" href="https://github.com/geft1310-hue/claude-daily-memory/blob/main/README-RU.md">Описание по-русски</a>
+      <a class="button secondary" href="https://github.com/geft1310-hue/claude-daily-memory/blob/main/docs/GOOGLE-RU.md">Подключение Google</a>
+    </div>
+  </section>
+
+  <h2>Боль: контекст теряется</h2>
+  <section class="grid">
+    <article class="card"><h3>Сессия закончилась</h3><p>Важное вчерашнее решение уже недоступно в сегодняшнем терминале.</p></article>
+    <article class="card"><h3>Проекты разрознены</h3><p>Исследования, планы и компромиссы разбросаны по репозиториям и чатам.</p></article>
+    <article class="card"><h3>Ручные итоги не работают</h3><p>Переносить полезное в базу знаний после каждой сессии утомительно и легко забыть.</p></article>
+    <article class="card"><h3>Стенограммы не подходят</h3><p>Они шумные, неудобные для повторного использования и могут содержать пароли и личные данные.</p></article>
+  </section>
+
+  <h2>Второй мозг из настоящей работы</h2>
+  <div class="flow">Все терминалы и проекты Claude Code → полезные результаты → одна дневная память → документ Google → NotebookLM</div>
+  <p class="lead">Документ подключается к NotebookLM один раз. По мере накопления знаний NotebookLM становится историей того, что вы сделали, решили, выяснили и ещё не закончили.</p>
+
+  <section class="grid">
+    <article class="card notebook"><h3>Восстановить решения</h3><p>Спросить, что было выбрано, какие варианты отклонены и почему.</p></article>
+    <article class="card notebook"><h3>Вернуться к проекту</h3><p>Получить сводку с текущим состоянием, открытыми вопросами и важным контекстом.</p></article>
+    <article class="card notebook"><h3>Связать проекты</h3><p>Найти повторяющиеся задачи, готовые решения, общие зависимости и противоречия.</p></article>
+    <article class="card notebook"><h3>Использовать NotebookLM</h3><p>Задавать вопросы и создавать конспекты, отчёты, FAQ, карты знаний, аудиообзоры и другие материалы, доступные в вашем аккаунте.</p></article>
+  </section>
+
+  <h2>Автоматически, но избирательно</h2>
+  <section class="grid">
+    <article class="card"><h3>Сохраняются результаты</h3><p>Отобранные планы, решения, заметки, отчёты, итоги проверок и безопасная общая активность.</p></article>
+    <article class="card"><h3>Отбрасывается шум</h3><p>Без приветствий, повторных объяснений, команд, полных запросов, полных ответов и данных инструментов.</p></article>
+    <article class="card"><h3>Все терминалы сразу</h3><p>Одновременные сессии работают безопасно благодаря блокировкам файлов и повторяемому результату.</p></article>
+    <article class="card"><h3>Без ежевечернего ритуала</h3><p>Ежедневная задача готовит память сама, без копирования разговоров вручную.</p></article>
+  </section>
+
+  <h2>Рассчитано на настоящие проекты</h2>
+  <section class="grid">
+    <article class="card security"><h3>Стенограммы не читаются</h3><p>Автоматический сбор не открывает файлы стенограмм Claude Code.</p></article>
+    <article class="card security"><h3>Двойная проверка</h3><p>Каждый материал и вся дневная память проверяются до сетевых запросов.</p></article>
+    <article class="card security"><h3>Официальное подключение</h3><p>API Google Drive и Docs с узким разрешением <code>drive.file</code>, токен — в системном хранилище паролей.</p></article>
+    <article class="card security"><h3>При сомнении — отказ</h3><p>Ошибка чтения, сбой проверки, отсутствие доступа или подозрительная строка отменяют отправку.</p></article>
+  </section>
+
+  <h2>Установка</h2>
+  <pre><code>git clone https://github.com/geft1310-hue/claude-daily-memory.git
+cd claude-daily-memory
+./install.sh</code></pre>
+  <p>Таймер остаётся выключенным до настройки Google. Сначала сделайте локальный пробный запуск, просмотрите результат, затем создайте документ по <a href="https://github.com/geft1310-hue/claude-daily-memory/blob/main/docs/GOOGLE-RU.md">инструкции на русском</a> и добавьте его в NotebookLM как источник Диска.</p>
+
+  <h2>Открытый проект</h2>
+  <p>Помогите улучшить установку, поиск секретов, работу с NotebookLM, расписание в macOS и Windows, доступность и переводы. См. <a href="https://github.com/geft1310-hue/claude-daily-memory/blob/main/CONTRIBUTING.md">руководство для участников</a> и <a href="https://github.com/geft1310-hue/claude-daily-memory/security/policy">политику безопасности</a>.</p>
+
+  <footer>Лицензия Apache-2.0. Проект не связан с Anthropic и Google и не одобрен ими. Claude, Gmail, Gemini, Google Drive и NotebookLM — товарные знаки соответствующих владельцев.</footer>
+</main>
+</body>
+</html>

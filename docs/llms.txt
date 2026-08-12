@@ -2,7 +2,8 @@
 
 Claude Daily Memory turns useful results from Claude Code sessions, terminals, and projects into a continuously growing NotebookLM knowledge base.
 
-Canonical website: https://geft1310-hue.github.io/claude-daily-memory/
+Canonical website (English): https://geft1310-hue.github.io/claude-daily-memory/
+Russian website: https://geft1310-hue.github.io/claude-daily-memory/ru/
 Source repository: https://github.com/geft1310-hue/claude-daily-memory
 README: https://github.com/geft1310-hue/claude-daily-memory/blob/main/README.md
 Security policy: https://github.com/geft1310-hue/claude-daily-memory/security/policy
@@ -35,7 +36,9 @@ Claude Daily Memory supplies and maintains the source. NotebookLM remains the pl
 - Gemini accepts only explicitly supplied text and cannot discover Gmail, Drive, project files, memory, or clipboard content.
 
 Primary documentation:
-- README: https://github.com/geft1310-hue/claude-daily-memory/blob/main/README.md
+- README (English): https://github.com/geft1310-hue/claude-daily-memory/blob/main/README.md
+- README (Russian): https://github.com/geft1310-hue/claude-daily-memory/blob/main/README-RU.md
+- Google and NotebookLM setup (Russian): https://github.com/geft1310-hue/claude-daily-memory/blob/main/docs/GOOGLE-RU.md
 - Security: https://github.com/geft1310-hue/claude-daily-memory/blob/main/SECURITY.md
 - Gmail rules: https://github.com/geft1310-hue/claude-daily-memory/blob/main/docs/GMAIL.md
 - Contribution guide: https://github.com/geft1310-hue/claude-daily-memory/blob/main/CONTRIBUTING.md

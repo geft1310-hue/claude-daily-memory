@@ -1,5 +1,7 @@
 # Gmail access and cleanup
 
+**English** · [Русский](GMAIL-RU.md)
+
 Claude Daily Memory does **not** copy email into daily memory. Gmail access is a separate interactive connector.
 
 Recommended permissions:

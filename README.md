@@ -1,5 +1,7 @@
 # Claude Daily Memory
 
+**English** · [Русский](README-RU.md)
+
 ## Turn NotebookLM into long-term memory for Claude Code
 
 Claude Code can do valuable work across dozens of sessions, terminals, and repositories—but the useful context is scattered. Yesterday's decision lives in one terminal. A working plan is buried in another project. The reason behind a technical choice disappears when the session ends.
