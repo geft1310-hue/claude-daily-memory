@@ -34,7 +34,9 @@ Claude Daily Memory is the ingestion and maintenance layer. It does not claim to
 
 ## Important files
 
-- `README.md`: product explanation, use cases, installation, and architecture
+- `README.md`: product explanation, use cases, installation, and architecture (English)
+- `README-RU.md`: the same documentation in Russian
+- `docs/GOOGLE-RU.md`: step-by-step Google and NotebookLM setup guide in Russian
 - `src/claude_daily_memory/hooks.py`: allowlisted cross-terminal lifecycle metadata
 - `src/claude_daily_memory/digest.py`: deterministic cross-project daily memory builder
 - `src/claude_daily_memory/sanitize.py`: fail-closed secret and personal-data scanner

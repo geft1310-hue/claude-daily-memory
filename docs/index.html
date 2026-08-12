@@ -9,6 +9,9 @@
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <meta name="author" content="Claude Daily Memory contributors">
   <link rel="canonical" href="https://geft1310-hue.github.io/claude-daily-memory/">
+  <link rel="alternate" hreflang="en" href="https://geft1310-hue.github.io/claude-daily-memory/">
+  <link rel="alternate" hreflang="ru" href="https://geft1310-hue.github.io/claude-daily-memory/ru/">
+  <link rel="alternate" hreflang="x-default" href="https://geft1310-hue.github.io/claude-daily-memory/">
   <link rel="license" href="https://www.apache.org/licenses/LICENSE-2.0">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Turn NotebookLM into long-term memory for Claude Code">
@@ -54,6 +57,8 @@
     h2 { font-size:clamp(1.65rem,3vw,2.5rem); line-height:1.15; margin-top:3.5rem; }
     h3 { line-height:1.2; }
     a { color:var(--accent); }
+    .langbar { display:flex; gap:.6rem; justify-content:flex-end; font-size:.9rem; }
+    .langbar span { font-weight:750; }
     .eyebrow { color:var(--accent); font-weight:800; text-transform:uppercase; letter-spacing:.13em; font-size:.78rem; }
     .lead { max-width:49rem; font-size:clamp(1.18rem,2vw,1.52rem); color:var(--muted); }
     .promise { max-width:52rem; padding:1rem 1.25rem; border-left:.35rem solid var(--accent2); background:var(--card); font-weight:700; }
@@ -75,6 +80,7 @@
 </head>
 <body>
 <main>
+  <p class="langbar"><span>English</span> · <a href="ru/">Русский</a></p>
   <section class="hero">
     <p class="eyebrow">Claude Code → daily memory → NotebookLM</p>
     <h1>Stop losing your best AI-assisted work.</h1>
