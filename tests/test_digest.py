@@ -63,6 +63,26 @@ class DigestTests(unittest.TestCase):
         self.assertNotIn(secret, result.text)
         self.assertIn("github-token", result.rules)
 
+    def test_combines_artifact_and_hmac_activity_under_registered_name(self) -> None:
+        self.add_artifact("# Решение\n\nОставить один раздел проекта.\n")
+        project_path = self.projects / "project-one"
+        project_path.mkdir()
+        (self.workspace / "aihub").mkdir()
+        (self.workspace / "aihub" / "projects.yml").write_text(
+            "projects:\n  - id: project-one\n    name: Project One\n    path: " + str(project_path) + "\n",
+            encoding="utf-8",
+        )
+        event = {
+            "time": datetime(2026, 8, 12, 12, tzinfo=timezone.utc).isoformat(),
+            "event": "UserPromptSubmit",
+            "session": "abc",
+            "project": self.builder._digest(str(project_path.resolve())),
+        }
+        (self.workspace / "events" / "events.jsonl").write_text(json.dumps(event) + "\n", encoding="utf-8")
+        result = self.builder.build(date(2026, 8, 12))
+        self.assertEqual(result.text.count("### Проект: Project One"), 1)
+        self.assertIn("1 запросов", result.text)
+
     def test_aggregates_only_safe_event_fields(self) -> None:
         event = {
             "time": datetime(2026, 8, 12, 12, tzinfo=timezone.utc).isoformat(),

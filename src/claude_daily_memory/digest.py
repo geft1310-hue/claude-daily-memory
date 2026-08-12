@@ -186,7 +186,14 @@ class DailyDigestBuilder:
             else:
                 excluded_sources.append(artifact.source_id)
 
-        projects = sorted(set(grouped) | set(activity))
+        named_artifacts: dict[str, list[tuple[Artifact, SanitizeResult]]] = defaultdict(list)
+        named_activity: dict[str, Counter[str]] = defaultdict(Counter)
+        for project, entries in grouped.items():
+            named_artifacts[project_names.get(project, project)].extend(entries)
+        for project, counter in activity.items():
+            named_activity[project_names.get(project, project)].update(counter)
+
+        projects = sorted(set(named_artifacts) | set(named_activity))
         lines = [
             f"## {day.isoformat()}",
             "",
@@ -196,15 +203,15 @@ class DailyDigestBuilder:
         if not projects:
             lines.extend(["За этот день безопасных итогов и событий нет.", ""])
         for project in projects:
-            lines.extend([f"### Проект: {project_names.get(project, project)}", ""])
-            entries = grouped.get(project, [])
+            lines.extend([f"### Проект: {project}", ""])
+            entries = named_artifacts.get(project, [])
             if entries:
                 lines.append("#### Решения и результаты")
                 for artifact, result in entries:
                     compact = " ".join(result.text.split())
                     lines.append(f"- **{artifact.artifact_type}**: {compact}")
                 lines.append("")
-            counter = activity.get(project, Counter())
+            counter = named_activity.get(project, Counter())
             lines.append(
                 "- Активность: "
                 f"{counter.get('SessionStart', 0)} сессий, "
