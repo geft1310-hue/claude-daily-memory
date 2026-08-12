@@ -1,6 +1,6 @@
 [Unit]
 Description=Run Claude Daily Memory once per day
-Documentation=https://github.com/geft2/claude-daily-memory
+Documentation=https://github.com/geft1310-hue/claude-daily-memory
 
 [Timer]
 OnCalendar=*-*-* 03:17:00

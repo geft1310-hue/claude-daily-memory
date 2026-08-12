@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Claude Daily Memory — Privacy-first long-term memory for Claude Code</title>
+  <meta name="description" content="Open-source, privacy-first daily memory for Claude Code. Aggregate multiple terminals and projects, block secrets, export safe digests to Google Drive, and use them in NotebookLM.">
+  <meta name="keywords" content="Claude Code memory, AI agent memory, long-term AI memory, Claude Code hooks, NotebookLM integration, Google Drive export, privacy, secret scanner, open source">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="author" content="Claude Daily Memory contributors">
+  <link rel="canonical" href="https://geft1310-hue.github.io/claude-daily-memory/">
+  <link rel="license" href="https://www.apache.org/licenses/LICENSE-2.0">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Claude Daily Memory">
+  <meta property="og:description" content="Privacy-first long-term memory for Claude Code with secret scanning, Google Drive export, and NotebookLM support.">
+  <meta property="og:url" content="https://geft1310-hue.github.io/claude-daily-memory/">
+  <meta property="og:site_name" content="Claude Daily Memory">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Claude Daily Memory">
+  <meta name="twitter:description" content="Safe daily memory for Claude Code across multiple terminals and projects.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    "name": "Claude Daily Memory",
+    "description": "Privacy-first, local-first long-term memory for Claude Code with fail-closed secret scanning and optional Google Drive export.",
+    "codeRepository": "https://github.com/geft1310-hue/claude-daily-memory",
+    "url": "https://geft1310-hue.github.io/claude-daily-memory/",
+    "license": "https://www.apache.org/licenses/LICENSE-2.0",
+    "programmingLanguage": "Python",
+    "runtimePlatform": "Linux",
+    "keywords": "Claude Code, AI memory, agent memory, NotebookLM, Google Drive, privacy, secret scanning"
+  }
+  </script>
+  <style>
+    :root { color-scheme: light dark; --bg:#f7f8fc; --card:#fff; --text:#162033; --muted:#526078; --accent:#5b46e8; --border:#dbe0ea; --safe:#087f5b; }
+    @media (prefers-color-scheme: dark) { :root { --bg:#0e1320; --card:#171e2d; --text:#edf1fa; --muted:#aeb9cc; --accent:#a99cff; --border:#2b3548; --safe:#63e6be; } }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--text); font:16px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    main { width:min(70rem, calc(100% - 2rem)); margin:auto; padding:4rem 0; }
+    h1 { font-size:clamp(2.5rem,7vw,5.5rem); line-height:1; letter-spacing:-.05em; margin:.3em 0; }
+    h2 { margin-top:2.5rem; }
+    .eyebrow { color:var(--safe); font-weight:750; text-transform:uppercase; letter-spacing:.12em; font-size:.8rem; }
+    .lead { max-width:47rem; font-size:clamp(1.15rem,2vw,1.45rem); color:var(--muted); }
+    .actions { display:flex; flex-wrap:wrap; gap:.8rem; margin:2rem 0; }
+    a.button { display:inline-block; padding:.75rem 1rem; border-radius:.65rem; text-decoration:none; font-weight:700; background:var(--accent); color:white; }
+    a.secondary { background:transparent; color:var(--text); border:1px solid var(--border); }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(15rem,1fr)); gap:1rem; }
+    .card { background:var(--card); border:1px solid var(--border); border-radius:1rem; padding:1.25rem; }
+    .card h3 { margin-top:0; }
+    pre { overflow-x:auto; background:#111827; color:#f8fafc; padding:1rem; border-radius:.8rem; }
+    code { font-family:ui-monospace,SFMono-Regular,Consolas,monospace; }
+    .flow { text-align:center; font-weight:650; padding:1.25rem; border:1px dashed var(--border); border-radius:1rem; overflow-x:auto; }
+    footer { margin-top:4rem; padding-top:1.5rem; border-top:1px solid var(--border); color:var(--muted); }
+  </style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">Open source · Local first · Fail closed</p>
+  <h1>Claude Daily Memory</h1>
+  <p class="lead">Long-term memory for Claude Code that combines work across terminals and projects without uploading raw transcripts, tool data, passwords, tokens, or private files.</p>
+  <div class="actions">
+    <a class="button" href="https://github.com/geft1310-hue/claude-daily-memory">View on GitHub</a>
+    <a class="button secondary" href="https://github.com/geft1310-hue/claude-daily-memory#quick-start">Quick start</a>
+    <a class="button secondary" href="llms.txt">AI-readable project facts</a>
+  </div>
+
+  <div class="flow" aria-label="Data flow">Claude Code terminals → local curated digest → secret scanner → Google Doc → NotebookLM Drive source</div>
+
+  <h2>Built for safe AI memory</h2>
+  <section class="grid">
+    <article class="card"><h3>No raw transcripts</h3><p>Only allowlisted lifecycle metadata and curated Markdown artifacts enter the pipeline.</p></article>
+    <article class="card"><h3>Secret-aware</h3><p>Known token formats, private keys, cookies, environment assignments, personal data, and suspicious high-entropy strings are blocked or redacted.</p></article>
+    <article class="card"><h3>Multiple terminals</h3><p>File locks, HMAC aliases, deterministic output, and idempotent document markers support concurrent Claude Code sessions.</p></article>
+    <article class="card"><h3>Official Google APIs</h3><p>Optional export uses Drive and Docs APIs with the narrow <code>drive.file</code> OAuth scope and operating-system Secret Service.</p></article>
+    <article class="card"><h3>NotebookLM-friendly</h3><p>Add the generated Google Doc once as a normal Drive source. No private APIs, browser automation, or copied cookies.</p></article>
+    <article class="card"><h3>Reversible Gmail cleanup</h3><p>Exact rule matches can move to Trash without repeated prompts. Permanent deletion is intentionally unsupported.</p></article>
+  </section>
+
+  <h2>Install</h2>
+  <pre><code>git clone https://github.com/geft1310-hue/claude-daily-memory.git
+cd claude-daily-memory
+./install.sh</code></pre>
+  <p>Google upload stays disabled until you explicitly complete OAuth setup. Start with a local dry run and review the generated Markdown.</p>
+
+  <h2>Discover and contribute</h2>
+  <p>The project welcomes security review, synthetic secret-scanner tests, accessibility improvements, translations, and cross-platform support. See the <a href="https://github.com/geft1310-hue/claude-daily-memory/blob/main/CONTRIBUTING.md">contribution guide</a> and <a href="https://github.com/geft1310-hue/claude-daily-memory/security/policy">security policy</a>.</p>
+
+  <footer>
+    Apache-2.0 licensed. Not affiliated with or endorsed by Anthropic or Google. Claude, Gmail, Gemini, Google Drive, and NotebookLM are trademarks of their respective owners.
+  </footer>
+</main>
+</body>
+</html>

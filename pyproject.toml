@@ -46,10 +46,10 @@ gemini = [
 test = []
 
 [project.urls]
-Homepage = "https://github.com/geft2/claude-daily-memory"
-Documentation = "https://github.com/geft2/claude-daily-memory#readme"
-Issues = "https://github.com/geft2/claude-daily-memory/issues"
-Security = "https://github.com/geft2/claude-daily-memory/security/policy"
+Homepage = "https://github.com/geft1310-hue/claude-daily-memory"
+Documentation = "https://github.com/geft1310-hue/claude-daily-memory#readme"
+Issues = "https://github.com/geft1310-hue/claude-daily-memory/issues"
+Security = "https://github.com/geft1310-hue/claude-daily-memory/security/policy"
 
 [project.scripts]
 claude-daily-memory-hook = "claude_daily_memory.hooks:main"

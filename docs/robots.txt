@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://geft1310-hue.github.io/claude-daily-memory/sitemap.xml

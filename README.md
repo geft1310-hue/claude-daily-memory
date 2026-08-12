@@ -39,7 +39,7 @@ Gmail and Gemini are deliberately **outside** this automatic path.
 Requirements: Linux, Python 3.11+, and `systemd --user` for scheduling.
 
 ```bash
-git clone https://github.com/geft2/claude-daily-memory.git
+git clone https://github.com/geft1310-hue/claude-daily-memory.git
 cd claude-daily-memory
 ./install.sh
 ```

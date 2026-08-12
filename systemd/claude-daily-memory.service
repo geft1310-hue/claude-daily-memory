@@ -1,6 +1,6 @@
 [Unit]
 Description=Build and upload the privacy-filtered Claude daily memory
-Documentation=https://github.com/geft2/claude-daily-memory
+Documentation=https://github.com/geft1310-hue/claude-daily-memory
 After=network-online.target
 Wants=network-online.target
 StartLimitIntervalSec=3600

@@ -2,9 +2,9 @@
 
 > Privacy-first, local-first long-term memory for Claude Code with deterministic daily digests, fail-closed secret scanning, optional Google Drive export, and NotebookLM Drive-source support.
 
-Canonical repository: https://github.com/geft2/claude-daily-memory
-Documentation: https://github.com/geft2/claude-daily-memory#readme
-Security policy: https://github.com/geft2/claude-daily-memory/security/policy
+Canonical repository: https://github.com/geft1310-hue/claude-daily-memory
+Documentation: https://github.com/geft1310-hue/claude-daily-memory#readme
+Security policy: https://github.com/geft1310-hue/claude-daily-memory/security/policy
 License: Apache-2.0
 
 ## Core facts

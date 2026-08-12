@@ -1,0 +1,26 @@
+# Claude Daily Memory
+
+Claude Daily Memory is open-source, privacy-first long-term memory for Claude Code.
+
+Canonical website: https://geft1310-hue.github.io/claude-daily-memory/
+Source repository: https://github.com/geft1310-hue/claude-daily-memory
+License: Apache-2.0
+Language: Python 3.11+
+
+Key properties:
+- aggregates safe activity across multiple Claude Code terminals and projects;
+- never reads raw Claude Code transcripts;
+- includes curated Markdown artifacts only;
+- scans artifacts and final digests for secrets before network access;
+- fails closed on uncertainty or errors;
+- optionally exports with official Google Drive and Docs APIs using drive.file;
+- stores refresh tokens in the operating-system Secret Service;
+- supports a standard Google Doc as a NotebookLM Drive source;
+- excludes Gmail content from daily memory;
+- only supports reversible Gmail moves to Trash, never permanent deletion;
+- provides an explicit-text-only bridge to Gemini.
+
+Primary documentation:
+- README: https://github.com/geft1310-hue/claude-daily-memory/blob/main/README.md
+- Security: https://github.com/geft1310-hue/claude-daily-memory/blob/main/SECURITY.md
+- Gmail rules: https://github.com/geft1310-hue/claude-daily-memory/blob/main/docs/GMAIL.md

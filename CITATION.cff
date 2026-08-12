@@ -5,8 +5,8 @@ type: software
 version: 0.1.0
 date-released: 2026-08-12
 license: Apache-2.0
-repository-code: https://github.com/geft2/claude-daily-memory
-url: https://github.com/geft2/claude-daily-memory
+repository-code: https://github.com/geft1310-hue/claude-daily-memory
+url: https://github.com/geft1310-hue/claude-daily-memory
 abstract: Privacy-first daily memory for Claude Code with fail-closed secret scanning and optional Google Drive export.
 keywords:
   - Claude Code
