@@ -29,12 +29,14 @@ class SanitizeTests(unittest.TestCase):
         self.assertNotIn("555", result.text)
         self.assertNotIn("alice", result.text)
 
-    def test_allows_normal_markdown_and_hashes(self) -> None:
+    def test_allows_normal_markdown_hashes_and_dates(self) -> None:
         result = sanitize_text(
-            "# Decision\n\nUse local storage for task abc-123.\n"
+            "# Decision for 2026-08-12\n\nUse local storage for task abc-123.\n"
             "Commit: 0123456789abcdef0123456789abcdef01234567\n"
         )
         self.assertTrue(result.allowed)
+        self.assertIn("2026-08-12", result.text)
+        self.assertNotIn("phone-redacted", result.rules)
         self.assertIn("local storage", result.text)
 
 

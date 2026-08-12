@@ -27,8 +27,13 @@ _DENY_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
 )
 
 _EMAIL_RE = re.compile(r"(?<![\w.+-])[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}(?![\w.-])", re.IGNORECASE)
-_PHONE_RE = re.compile(r"(?<!\w)(?:\+?\d[\d ()-]{8,}\d)(?!\w)")
+_PHONE_RE = re.compile(r"(?<!\w)(?:\+?\d[\d ().-]{8,}\d)(?!\w)")
 _HOME_PATH_RE = re.compile(r"(?<!\w)/home/[^/\s]+")
+
+
+def _redact_phone(match: re.Match[str]) -> str:
+    value = match.group(0)
+    return "[phone]" if len(re.sub(r"\D", "", value)) >= 10 else value
 _CANDIDATE_SECRET_RE = re.compile(r"(?<![A-Za-z0-9])[A-Za-z0-9_+\-/=]{40,}(?![A-Za-z0-9])")
 _SAFE_LONG_RE = re.compile(r"^(?:[0-9a-f]{40}|[0-9a-f]{64}|[0-9a-f]{128})$", re.IGNORECASE)
 
@@ -77,13 +82,13 @@ def sanitize_text(text: str, *, max_bytes: int = MAX_EXPORT_BYTES) -> SanitizeRe
                 return SanitizeResult(False, "", ("high-entropy-secret",))
 
         cleaned = _EMAIL_RE.sub("[email]", text)
-        cleaned = _PHONE_RE.sub("[phone]", cleaned)
+        cleaned = _PHONE_RE.sub(_redact_phone, cleaned)
         cleaned = _HOME_PATH_RE.sub("/home/[user]", cleaned)
         redactions: list[str] = []
         if cleaned != text:
             if _EMAIL_RE.search(text):
                 redactions.append("email-redacted")
-            if _PHONE_RE.search(text):
+            if any(len(re.sub(r"\D", "", match.group(0))) >= 10 for match in _PHONE_RE.finditer(text)):
                 redactions.append("phone-redacted")
             if _HOME_PATH_RE.search(text):
                 redactions.append("home-path-redacted")
