@@ -7,12 +7,15 @@ date-released: 2026-08-12
 license: Apache-2.0
 repository-code: https://github.com/geft1310-hue/claude-daily-memory
 url: https://github.com/geft1310-hue/claude-daily-memory
-abstract: Privacy-first daily memory for Claude Code with fail-closed secret scanning and optional Google Drive export.
+abstract: Long-term cross-project memory for Claude Code that turns curated daily work into a growing NotebookLM knowledge base through an official Google Drive source.
 keywords:
   - Claude Code
+  - NotebookLM
+  - long-term memory
+  - second brain
   - agent memory
   - AI memory
+  - cross-project memory
+  - Google Drive
   - privacy
   - secret scanning
-  - Google Drive
-  - NotebookLM

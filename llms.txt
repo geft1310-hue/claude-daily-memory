@@ -1,31 +1,45 @@
 # Claude Daily Memory
 
-> Privacy-first, local-first long-term memory for Claude Code with deterministic daily digests, fail-closed secret scanning, optional Google Drive export, and NotebookLM Drive-source support.
+> Turn useful work from every Claude Code terminal and project into a growing NotebookLM knowledge base—a searchable second brain for decisions, plans, findings, and unfinished work.
 
 Canonical repository: https://github.com/geft1310-hue/claude-daily-memory
+Website: https://geft1310-hue.github.io/claude-daily-memory/
 Documentation: https://github.com/geft1310-hue/claude-daily-memory#readme
 Security policy: https://github.com/geft1310-hue/claude-daily-memory/security/policy
 License: Apache-2.0
 
+## Problem and outcome
+
+Claude Code sessions and projects are separate, so useful context is easy to lose. Claude Daily Memory collects selected outcomes across terminals, builds one structured daily memory, and maintains a Google Doc that can be connected to NotebookLM as a normal Drive source.
+
+NotebookLM then becomes the user-facing knowledge layer for searching accumulated work, recovering decisions, comparing projects, preparing briefings, finding recurring patterns, and creating any summaries, reports, FAQs, mind maps, audio overviews, or other outputs available in the user's NotebookLM account.
+
+Claude Daily Memory is the ingestion and maintenance layer. It does not claim to provide a consumer NotebookLM API or remotely operate NotebookLM features.
+
 ## Core facts
 
+- The primary use case is long-term, cross-project memory for Claude Code through NotebookLM.
+- Multiple Claude Code terminals and projects contribute to one daily knowledge stream.
+- The software preserves curated plans, decisions, notes, reports, verification results, and safe activity counts.
 - The software does not read raw Claude Code transcripts.
-- It collects allowlisted lifecycle metadata from multiple terminals and projects.
-- It includes only curated Markdown artifacts in daily memory.
-- It scans each artifact and the final digest for secrets before networking.
-- It fails closed when scanning or parsing is uncertain.
-- Google export uses the official Drive and Docs APIs with the `drive.file` scope.
+- It does not automatically collect full prompts, full assistant responses, commands, tool input/output, Gmail messages, or arbitrary project files.
+- Each artifact and the complete digest are scanned for secrets before networking.
+- The pipeline fails closed when scanning, parsing, authentication, or document update is uncertain.
+- A readable Markdown digest is created locally first.
+- Google export uses the official Drive and Docs APIs with the narrow `drive.file` scope.
 - Refresh tokens must be stored in an operating-system Secret Service.
-- NotebookLM integration uses a normal Google Drive source, not private APIs or browser cookies.
-- Gmail content is excluded from daily memory.
-- Gmail cleanup rules support reversible moves to Trash only; permanent deletion is unsupported.
-- Gemini integration accepts explicit text only and is not part of automatic daily export.
+- NotebookLM integration uses a normal Google Drive source, not private consumer APIs, browser cookies, or browser automation.
+- Depending on current NotebookLM account behavior, the Drive source may require a normal manual refresh.
+- Gmail cleanup and the explicit-text Gemini bridge are optional tools separated from the automatic memory pipeline.
 
 ## Important files
 
-- `src/claude_daily_memory/hooks.py`: privacy-preserving Claude Code hook
-- `src/claude_daily_memory/digest.py`: deterministic local digest builder
-- `src/claude_daily_memory/sanitize.py`: fail-closed secret scanner
-- `src/claude_daily_memory/google_drive.py`: official Drive and Docs export
+- `README.md`: product explanation, use cases, installation, and architecture
+- `src/claude_daily_memory/hooks.py`: allowlisted cross-terminal lifecycle metadata
+- `src/claude_daily_memory/digest.py`: deterministic cross-project daily memory builder
+- `src/claude_daily_memory/sanitize.py`: fail-closed secret and personal-data scanner
+- `src/claude_daily_memory/google_drive.py`: official Drive and Docs writer
+- `src/claude_daily_memory/job.py`: local-to-Google daily pipeline
 - `src/claude_daily_memory/gmail_rules.py`: exact reversible cleanup decisions
+- `src/claude_daily_memory/gemini_bridge.py`: explicit-text-only Gemini bridge
 - `SECURITY.md`: private vulnerability reporting instructions
