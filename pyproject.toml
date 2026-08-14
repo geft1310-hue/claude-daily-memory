@@ -4,8 +4,8 @@ build-backend = "hatchling.build"
 
 [project]
 name = "claude-daily-memory"
-version = "0.1.0"
-description = "Privacy-first daily memory for Claude Code, with secret scanning and optional Google Drive export."
+version = "0.2.0"
+description = "Privacy-first persistent NotebookLM memory and local MCP access for Claude Code."
 readme = "README.md"
 requires-python = ">=3.11"
 license = {file = "LICENSE"}
@@ -28,6 +28,7 @@ classifiers = [
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
   "Topic :: Software Development :: Libraries :: Application Frameworks",
 ]
 dependencies = ["PyYAML>=6.0"]
@@ -43,6 +44,9 @@ gemini = [
   "google-genai>=1.30",
   "google-auth>=2.40",
 ]
+notebooklm = [
+  "notebooklm-py[browser,mcp]==0.8.0",
+]
 test = []
 
 [project.urls]
@@ -55,6 +59,7 @@ Security = "https://github.com/geft1310-hue/claude-daily-memory/security/policy"
 claude-daily-memory-hook = "claude_daily_memory.hooks:main"
 claude-daily-memory = "claude_daily_memory.cli:main"
 claude-daily-memory-gemini = "claude_daily_memory.gemini_bridge:main"
+claude-daily-memory-setup = "claude_daily_memory.setup:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/claude_daily_memory"]

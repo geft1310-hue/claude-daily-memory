@@ -1,47 +1,34 @@
 # Claude Daily Memory
 
-> Turn useful work from every Claude Code terminal and project into a growing NotebookLM knowledge base—a searchable second brain for decisions, plans, findings, and unfinished work.
+Claude Daily Memory makes NotebookLM the persistent memory for Claude Code. One installation collects privacy-filtered daily outcomes, appends them idempotently to one growing Google Doc, automatically refreshes that source in one permanent NotebookLM notebook, and registers a full local NotebookLM MCP so Claude can use all notebooks and materials in the account.
 
-Canonical repository: https://github.com/geft1310-hue/claude-daily-memory
-Website: https://geft1310-hue.github.io/claude-daily-memory/
-Documentation: https://github.com/geft1310-hue/claude-daily-memory#readme
-Security policy: https://github.com/geft1310-hue/claude-daily-memory/security/policy
+Canonical website: https://geft1310-hue.github.io/claude-daily-memory/
+Russian website: https://geft1310-hue.github.io/claude-daily-memory/ru/
+Repository: https://github.com/geft1310-hue/claude-daily-memory
+Version: 0.2.0
 License: Apache-2.0
-
-## Problem and outcome
-
-Claude Code sessions and projects are separate, so useful context is easy to lose. Claude Daily Memory collects selected outcomes across terminals, builds one structured daily memory, and maintains a Google Doc that can be connected to NotebookLM as a normal Drive source.
-
-NotebookLM then becomes the user-facing knowledge layer for searching accumulated work, recovering decisions, comparing projects, preparing briefings, finding recurring patterns, and creating any summaries, reports, FAQs, mind maps, audio overviews, or other outputs available in the user's NotebookLM account.
-
-Claude Daily Memory is the ingestion and maintenance layer. It does not claim to provide a consumer NotebookLM API or remotely operate NotebookLM features.
+Language: Python 3.11+
 
 ## Core facts
 
-- The primary use case is long-term, cross-project memory for Claude Code through NotebookLM.
-- Multiple Claude Code terminals and projects contribute to one daily knowledge stream.
-- The software preserves curated plans, decisions, notes, reports, verification results, and safe activity counts.
-- The software does not read raw Claude Code transcripts.
-- It does not automatically collect full prompts, full assistant responses, commands, tool input/output, Gmail messages, or arbitrary project files.
-- Each artifact and the complete digest are scanned for secrets before networking.
-- The pipeline fails closed when scanning, parsing, authentication, or document update is uncertain.
-- A readable Markdown digest is created locally first.
-- Google export uses the official Drive and Docs APIs with the narrow `drive.file` scope.
-- Refresh tokens must be stored in an operating-system Secret Service.
-- NotebookLM integration uses a normal Google Drive source, not private consumer APIs, browser cookies, or browser automation.
-- Depending on current NotebookLM account behavior, the Drive source may require a normal manual refresh.
-- Gmail cleanup and the explicit-text Gemini bridge are optional tools separated from the automatic memory pipeline.
+- One installer and one environment: `~/.local/share/claude-daily-memory/venv`.
+- One unified setup handles Google OAuth, Google Doc creation/reuse, local NotebookLM login, permanent notebook/source binding, local stdio MCP registration, Gemini keyring setup, initial source refresh, and timer enablement.
+- Daily state advances only after both Google append and NotebookLM refresh succeed.
+- Claude can use all NotebookLM notebooks, sources, grounded chat, notes, research, Studio artifacts, downloads, and sharing available through the pinned MCP.
+- Deletion and sharing expansion require preview and separate explicit confirmation.
+- Raw Claude transcripts, full prompts/responses, commands, tool data, Gmail, arbitrary project files, and NotebookLM answers are not automatic memory sources.
+- Every selected artifact and the final digest are scanned before networking; uncertainty fails closed.
+- Google Drive/Docs use official APIs with `drive.file`; refresh tokens and the Gemini API key live in the OS keyring.
+- NotebookLM uses pinned `notebooklm-py[browser,mcp]==0.8.0`, local browser state, and local `stdio`; no remote HTTP MCP, master token, `NOTEBOOKLM_AUTH_JSON`, or cloud cookie transfer.
+- The NotebookLM dependency uses internal Google web RPCs and may require an update or renewed login when Google changes them.
 
-## Important files
+## Documentation
 
-- `README.md`: product explanation, use cases, installation, and architecture (English)
-- `README-RU.md`: the same documentation in Russian
-- `docs/GOOGLE-RU.md`: step-by-step Google and NotebookLM setup guide in Russian
-- `src/claude_daily_memory/hooks.py`: allowlisted cross-terminal lifecycle metadata
-- `src/claude_daily_memory/digest.py`: deterministic cross-project daily memory builder
-- `src/claude_daily_memory/sanitize.py`: fail-closed secret and personal-data scanner
-- `src/claude_daily_memory/google_drive.py`: official Drive and Docs writer
-- `src/claude_daily_memory/job.py`: local-to-Google daily pipeline
-- `src/claude_daily_memory/gmail_rules.py`: exact reversible cleanup decisions
-- `src/claude_daily_memory/gemini_bridge.py`: explicit-text-only Gemini bridge
-- `SECURITY.md`: private vulnerability reporting instructions
+- English README: https://github.com/geft1310-hue/claude-daily-memory/blob/main/README.md
+- Russian README: https://github.com/geft1310-hue/claude-daily-memory/blob/main/README-RU.md
+- Google setup: https://github.com/geft1310-hue/claude-daily-memory/blob/main/docs/GOOGLE.md
+- Russian Google setup: https://github.com/geft1310-hue/claude-daily-memory/blob/main/docs/GOOGLE-RU.md
+- NotebookLM guide: https://github.com/geft1310-hue/claude-daily-memory/blob/main/docs/NOTEBOOKLM.md
+- Russian NotebookLM guide: https://github.com/geft1310-hue/claude-daily-memory/blob/main/docs/NOTEBOOKLM-RU.md
+- Security: https://github.com/geft1310-hue/claude-daily-memory/blob/main/SECURITY.md
+- Third-party notice: https://github.com/geft1310-hue/claude-daily-memory/blob/main/THIRD_PARTY.md

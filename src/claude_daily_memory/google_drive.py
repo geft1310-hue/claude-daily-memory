@@ -50,11 +50,17 @@ def _read_client_config(path: Path) -> dict[str, Any]:
         client_id = installed["client_id"]
         client_secret = installed["client_secret"]
         token_uri = installed.get("token_uri", "https://oauth2.googleapis.com/token")
+        quota_project_id = installed.get("quota_project_id")
     except (OSError, UnicodeError, json.JSONDecodeError, KeyError, TypeError) as error:
         raise GoogleIntegrationError("Invalid Google Desktop OAuth client file") from error
     if token_uri != "https://oauth2.googleapis.com/token":
         raise GoogleIntegrationError("Unexpected OAuth token endpoint")
-    return {"client_id": client_id, "client_secret": client_secret, "token_uri": token_uri}
+    return {
+        "client_id": client_id,
+        "client_secret": client_secret,
+        "token_uri": token_uri,
+        "quota_project_id": quota_project_id,
+    }
 
 
 def credentials_from_keyring(client_file: Path) -> Any:
@@ -70,6 +76,7 @@ def credentials_from_keyring(client_file: Path) -> Any:
         client_id=config["client_id"],
         client_secret=config["client_secret"],
         scopes=[DRIVE_FILE_SCOPE],
+        quota_project_id=config["quota_project_id"],
     )
     credentials.refresh(Request())
     if not credentials.valid or not credentials.has_scopes([DRIVE_FILE_SCOPE]):
