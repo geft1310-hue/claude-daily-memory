@@ -1,44 +1,26 @@
-# Claude Daily Memory
+# Claude Daily Memory v0.2.0
 
-Claude Daily Memory turns useful results from Claude Code sessions, terminals, and projects into a continuously growing NotebookLM knowledge base.
+Claude Daily Memory is one application that turns selected Claude Code outcomes into persistent NotebookLM memory and gives Claude full local MCP access to all NotebookLM notebooks and materials.
 
-Canonical website (English): https://geft1310-hue.github.io/claude-daily-memory/
-Russian website: https://geft1310-hue.github.io/claude-daily-memory/ru/
-Source repository: https://github.com/geft1310-hue/claude-daily-memory
-README: https://github.com/geft1310-hue/claude-daily-memory/blob/main/README.md
-Security policy: https://github.com/geft1310-hue/claude-daily-memory/security/policy
+Website: https://geft1310-hue.github.io/claude-daily-memory/
+Russian: https://geft1310-hue.github.io/claude-daily-memory/ru/
+Source: https://github.com/geft1310-hue/claude-daily-memory
 License: Apache-2.0
-Language: Python 3.11+
 
-## Main job to be done
+## Product contract
 
-Useful context disappears when a Claude Code session ends and becomes fragmented when several terminals or projects are active. Claude Daily Memory preserves selected decisions, plans, findings, reports, and unfinished threads in one structured daily record. It maintains that record in a Google Doc that the user can add to NotebookLM as a standard Drive source.
-
-The accumulated source lets the user apply NotebookLM capabilities to ongoing work: search past decisions, recover reasoning, compare projects, prepare return-to-project briefings, identify repeated problems and dependencies, and create outputs supported by the user's NotebookLM account.
-
-## Product boundary
-
-Claude Daily Memory supplies and maintains the source. NotebookLM remains the place where the user searches, analyzes, connects, and transforms the accumulated knowledge. The project does not use an unofficial consumer NotebookLM API, browser cookies, or Playwright login automation. Normal NotebookLM source synchronization or refresh behavior still applies.
-
-## Safety and architecture facts
-
-- Aggregates safe activity from multiple Claude Code terminals and projects.
-- Includes curated Markdown outcomes and high-level activity counts.
-- Never reads raw Claude Code transcript JSONL files.
-- Excludes full prompts, full responses, commands, tool input/output, Gmail content, and arbitrary files from automatic memory.
-- Scans every selected artifact and the complete digest before network access.
-- Fails closed on suspicious content, malformed input, scanner errors, missing credentials, or update conflicts.
-- Creates a local Markdown archive before optional cloud export.
-- Uses official Google Drive and Docs APIs with `drive.file`.
-- Stores refresh tokens in the operating-system Secret Service.
-- Keeps optional Gmail cleanup and Gemini tools separate from daily memory.
-- Gmail cleanup supports reversible Trash moves only; permanent deletion is unsupported.
-- Gemini accepts only explicitly supplied text and cannot discover Gmail, Drive, project files, memory, or clipboard content.
+- `./install.sh` creates one application venv with Google, Gemini, and pinned `notebooklm-py[browser,mcp]==0.8.0`.
+- One confirmed setup creates/reuses a Google Doc, permanent NotebookLM notebook and source; registers local stdio MCP; stores cloud secrets in the OS keyring; and enables the timer only after full success.
+- The daily job writes one sanitized daily record to Google Docs and automatically refreshes the configured NotebookLM source.
+- Failed NotebookLM refresh leaves the day pending for a safe idempotent retry.
+- The MCP covers all account notebooks, sources, chat, notes, research, Studio artifacts, downloads, and sharing—not only the memory notebook.
+- Automatic memory excludes transcripts, full prompts/responses, tool data, Gmail, arbitrary files, and NotebookLM answers.
+- NotebookLM credential state stays local; remote MCP, HTTP listeners, master tokens, environment credential export, and cloud cookie transfer are unsupported.
+- Internal NotebookLM web RPCs are supplied by a pinned third-party MIT dependency and can change when Google changes its web application.
 
 Primary documentation:
-- README (English): https://github.com/geft1310-hue/claude-daily-memory/blob/main/README.md
-- README (Russian): https://github.com/geft1310-hue/claude-daily-memory/blob/main/README-RU.md
-- Google and NotebookLM setup (Russian): https://github.com/geft1310-hue/claude-daily-memory/blob/main/docs/GOOGLE-RU.md
-- Security: https://github.com/geft1310-hue/claude-daily-memory/blob/main/SECURITY.md
-- Gmail rules: https://github.com/geft1310-hue/claude-daily-memory/blob/main/docs/GMAIL.md
-- Contribution guide: https://github.com/geft1310-hue/claude-daily-memory/blob/main/CONTRIBUTING.md
+- https://github.com/geft1310-hue/claude-daily-memory/blob/main/README.md
+- https://github.com/geft1310-hue/claude-daily-memory/blob/main/README-RU.md
+- https://github.com/geft1310-hue/claude-daily-memory/blob/main/docs/NOTEBOOKLM.md
+- https://github.com/geft1310-hue/claude-daily-memory/blob/main/docs/NOTEBOOKLM-RU.md
+- https://github.com/geft1310-hue/claude-daily-memory/blob/main/SECURITY.md

@@ -20,6 +20,8 @@ class SystemdTests(unittest.TestCase):
             "RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6",
         ):
             self.assertIn(setting, text)
+        self.assertIn("ReadOnlyPaths=%h/.config/claude-daily-memory", text)
+        self.assertIn("%h/.notebooklm", text)
         self.assertNotIn(".claude/projects", text)
         self.assertNotIn("gmail", text.casefold())
 

@@ -2,12 +2,12 @@ cff-version: 1.2.0
 title: Claude Daily Memory
 message: If this software helps your work, please cite the repository.
 type: software
-version: 0.1.0
-date-released: 2026-08-12
+version: 0.2.0
+date-released: 2026-08-14
 license: Apache-2.0
 repository-code: https://github.com/geft1310-hue/claude-daily-memory
 url: https://github.com/geft1310-hue/claude-daily-memory
-abstract: Long-term cross-project memory for Claude Code that turns curated daily work into a growing NotebookLM knowledge base through an official Google Drive source.
+abstract: Privacy-first persistent NotebookLM memory for Claude Code with automatic daily source refresh and full local MCP access across all notebooks.
 keywords:
   - Claude Code
   - NotebookLM

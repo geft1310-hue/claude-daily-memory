@@ -7,6 +7,7 @@ import hashlib
 import hmac
 import json
 import os
+import sys
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
@@ -14,6 +15,7 @@ from typing import Any
 from .audit import append_audit
 from .digest import DailyDigestBuilder
 from .google_drive import GoogleDriveMemory, credentials_from_keyring, digest_id
+from .notebooklm_integration import MemoryBinding, NotebookLMCLI
 
 
 def _read_json(path: Path) -> dict[str, Any]:
@@ -82,8 +84,16 @@ def main() -> int:
         file_id = config.get("drive_file_id")
         if not isinstance(file_id, str) or not file_id:
             raise ValueError("Missing drive_file_id")
+        profile = config.get("notebooklm_profile")
+        notebook_id = config.get("notebooklm_notebook_id")
+        source_id = config.get("notebooklm_source_id")
+        if not all(isinstance(value, str) and value for value in (profile, notebook_id, source_id)):
+            raise ValueError("Missing NotebookLM memory binding")
         memory = GoogleDriveMemory(credentials_from_keyring(args.google_client))
         append_result = memory.append_once(file_id, digest_id(key, result.day, result.text), result.text)
+        notebooklm_executable = Path(sys.executable).with_name("notebooklm")
+        notebooklm = NotebookLMCLI(notebooklm_executable, profile=profile)
+        notebooklm.refresh_source(MemoryBinding(notebook_id, source_id))
         _atomic_json(
             args.state,
             {

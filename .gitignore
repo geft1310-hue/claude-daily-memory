@@ -23,6 +23,10 @@ state.json
 events.jsonl
 digest-*.md
 workspace/
+.notebooklm/
+storage_state.json
+master_token.json
+browser_profile/
 
 # Editors and operating systems
 .idea/

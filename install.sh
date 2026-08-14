@@ -21,7 +21,8 @@ python3 -c 'import sys; raise SystemExit(0 if sys.version_info >= (3, 11) else 1
 
 install -d -m 0700 "${APP_DIR}" "${CONFIG_DIR}" "${STATE_DIR}" "${UNIT_DIR}"
 python3 -m venv "${APP_DIR}/venv"
-"${APP_DIR}/venv/bin/python" -m pip install "${PROJECT_DIR}[google]"
+"${APP_DIR}/venv/bin/python" -m pip install "${PROJECT_DIR}[google,gemini,notebooklm]"
+"${APP_DIR}/venv/bin/playwright" install chromium
 
 if [[ ! -f "${CONFIG_DIR}/hmac.key" ]]; then
   "${APP_DIR}/venv/bin/python" -c 'import secrets,sys; sys.stdout.buffer.write(secrets.token_bytes(32))' > "${CONFIG_DIR}/hmac.key"
@@ -32,5 +33,5 @@ install -m 0600 "${PROJECT_DIR}/systemd/claude-daily-memory.timer" "${UNIT_DIR}/
 systemctl --user daemon-reload
 systemctl --user disable --now claude-daily-memory.timer 2>/dev/null || true
 
-printf '%s\n' "Installed safely. The timer is staged but remains off until Google OAuth setup is completed."
-printf '%s\n' "After OAuth setup, enable it with: systemctl --user enable --now claude-daily-memory.timer"
+printf '%s\n' "Installed safely. The timer remains off until complete Google and NotebookLM setup succeeds."
+printf '%s\n' "Next: run ~/.local/share/claude-daily-memory/venv/bin/claude-daily-memory-setup --help"
